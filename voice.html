@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-family: sans-serif;
+
+        }
+        .container{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: #355c7d;
+
+        }
+        .card{
+            text-align: center;
+            padding:40px 30px;
+            width:280px;
+            border-radius: 30px;
+            border-radius: 50px;
+            background: #355c7d;
+            box-shadow:  20px 20px 60px #2d4e6a,
+             -20px -20px 60px #3d6a90;
+
+        }
+        .textArea{
+            outline: none;
+            inset: none;
+            box-shadow: none;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 20px;
+            background: #355c7d;
+            width: 80%;
+            color: white;
+            margin-top: 30px;
+        }
+        h2{
+            color:rgb(200, 217, 255);
+        }
+        .textArea:focus{
+            outline: none;
+        }
+        .textArea::placeholder{
+            color: rgba(255, 255, 255, 0.908);
+        }
+        button{
+            cursor: pointer;
+            background-color: rgb(200, 217, 255);
+            color:#464e86;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-top: 30px;
+            border:none;
+        }
+        .fa-voicemail{
+            background-image: linear-gradient(to right, #c1d5f2, #a3bcdd, #84a4c8, #658cb3, #44759f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 70px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <i class="fas fa-voicemail"></i>
+            <h2>English Pronunciation</h2>
+            <input class="textArea" type="text"  placeholder="Text Here">
+
+
+            </textarea>
+            <button type="button" id="btn">Chech To Speak
+                <i class="fas fa-volume-high"></i>
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+    let btn= document.getElementById("btn");
+    
+
+    btn.addEventListener('click',()=>{
+        let textArea = document.querySelector(".textArea").value;
+        let voice = new SpeechSynthesisUtterance(textArea);
+        voice.lang = 'en-GB';
+        speechSynthesis.speak(voice);
+       
+    })
+</script>
+</html>
